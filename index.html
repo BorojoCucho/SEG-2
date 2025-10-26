@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Repositorio de Conceptos de Programación y Estructuras de Datos en Python">
+    <meta name="author" content="Joseph Alexander Morales Cardona">
+    <title>Repositorio de Conceptos de Programación - Joseph Alexander Morales Cardona</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .author-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 30px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .author-info strong {
+            color: #fbbf24;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg-white);
+            padding: 20px;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 120px;
+            z-index: 99;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: var(--bg-light);
+            color: var(--secondary-color);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Sections */
+        section {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+            scroll-margin-top: 200px;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        section h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        section h4 {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* Paragraphs and Text */
+        p {
+            margin-bottom: 15px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        em {
+            color: var(--primary-color);
+            font-style: italic;
+        }
+
+        /* Lists */
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tbody tr:hover {
+            background-color: var(--bg-light);
+        }
+
+        /* Code Blocks */
+        pre {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: var(--shadow-lg);
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: var(--danger-color);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #e5e7eb;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--text-gray);
+            background: var(--bg-light);
+            padding: 15px 20px;
+            border-radius: 4px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-light);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            border-left-color: var(--accent-color);
+        }
+
+        .card h4 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        /* License Section */
+        .license {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef08a 100%);
+            border: 2px solid var(--warning-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .license h3 {
+            color: #92400e;
+            margin-top: 0;
+        }
+
+        .license p {
+            color: #78350f;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: #d1d5db;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+            color: #d1d5db;
+        }
+
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .badge-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .badge-success {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .badge-warning {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+
+            section h3 {
+                font-size: 1.2rem;
+            }
+
+            pre {
+                font-size: 0.8rem;
+                padding: 15px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Highlight Animation */
+        @keyframes highlight {
+            0% {
+                background-color: #fef08a;
+            }
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        section:target {
+            animation: highlight 2s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            font-size: 1.5rem;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>📚 Repositorio de Conceptos de Programación</h1>
+        <p>Estructuras de Datos y Algoritmos en Python</p>
+        <div class="author-info">
+            <strong>Autor:</strong> Joseph Alexander Morales Cardona | <strong>Licencia:</strong> MIT
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#licencia">Licencia</a></li>
+            <li><a href="#autor">Autor</a></li>
+            <li><a href="#codigos">Códigos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Introducción -->
+        <section id="introduccion">
+            <h2>🎯 Introducción</h2>
+            <p>
+                Este repositorio contiene una colección exhaustiva de ejemplos de código en Python que ilustran conceptos fundamentales de programación e implementación de estructuras de datos. Los ejemplos están diseñados para ser educativos y prácticos, demostrando cómo aplicar estos conceptos en escenarios del mundo real.
+            </p>
+            <p>
+                Cada sección del repositorio incluye explicaciones detalladas, ejemplos de código completamente funcionales y demostraciones prácticas que facilitan la comprensión de conceptos complejos.
+            </p>
+            <div class="card">
+                <h4>📌 Contenido Principal</h4>
+                <ul>
+                    <li><strong>Listas por Comprensión:</strong> Técnicas avanzadas para crear listas de forma concisa</li>
+                    <li><strong>Colas (Queues):</strong> Implementación de la estructura FIFO</li>
+                    <li><strong>Pilas (Stacks):</strong> Implementación de la estructura LIFO</li>
+                    <li><strong>Estructuras Anidadas:</strong> Creación de matrices y estructuras multidimensionales</li>
+                    <li><strong>Aplicaciones Web:</strong> Ejemplo de desarrollo web interactivo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Licencia MIT -->
+        <section id="licencia">
+            <h2>⚖️ Licencia MIT</h2>
+            <div class="license">
+                <h3>Términos de la Licencia</h3>
+                <p>
+                    Este proyecto está bajo la <strong>Licencia MIT</strong>. Esto significa que puedes usar, copiar, modificar y distribuir este software libremente, siempre que incluyas el aviso de copyright y esta licencia en cualquier copia o porción sustancial del software.
+                </p>
+                <p>
+                    <strong>Copyright (c) 2024 Joseph Alexander Morales Cardona</strong>
+                </p>
+                <p>
+                    Se concede permiso, libre de cargos, a cualquier persona que obtenga una copia de este software y de los archivos de documentación asociados (el "Software"), para utilizar el Software sin restricción, incluyendo sin limitación los derechos a usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar, y/o vender copias del Software.
+                </p>
+                <p>
+                    <strong>Disclaimer:</strong> El software se proporciona "tal cual", sin garantía de ningún tipo, expresa o implícita.
+                </p>
+            </div>
+        </section>
+
+        <!-- Autor -->
+        <section id="autor">
+            <h2>👨‍💻 Información del Autor</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nombre Completo</strong></td>
+                        <td>Joseph Alexander Morales Cardona</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Especialidad</strong></td>
+                        <td>Lenguajes de Programación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lenguaje Principal</strong></td>
+                        <td>Python</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Licencia del Proyecto</strong></td>
+                        <td>MIT</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card">
+                <h4>🎓 Especialización</h4>
+                <p>
+                    Joseph Alexander Morales Cardona es un especialista en lenguajes de programación con enfoque en Python. Su trabajo se centra en la educación de conceptos fundamentales de programación, estructuras de datos y algoritmos, con el objetivo de facilitar el aprendizaje de desarrolladores en todos los niveles.
+                </p>
+            </div>
+        </section>
+
+        <!-- Códigos -->
+        <section id="codigos">
+            <h2>💻 Explicación de Códigos</h2>
+
+            <!-- Código 1 -->
+            <div class="card">
+                <h3>1️⃣ Listas por Comprensión Anidadas: Gestión de Inventario</h3>
+                <p>
+                    Este código demuestra el uso de <strong>listas por comprensión</strong> para realizar operaciones de análisis de datos de inventario de manera concisa y eficiente. Las listas por comprensión son una forma elegante y Pythónica de crear nuevas listas a partir de iterables existentes.
+                </p>
+                <h4>🔑 Conceptos Clave</h4>
+                <ul>
+                    <li><strong>Listas por Comprensión:</strong> Se utilizan para crear nuevas listas aplicando una expresión a cada elemento de un iterable.</li>
+                    <li><strong>Validación de Entrada:</strong> Incluye bucles <code>while</code> y bloques <code>try-except</code> para asegurar que el usuario ingrese valores numéricos no negativos.</li>
+                    <li><strong>Análisis de Inventario:</strong> Las listas por comprensión se usan para extraer nombres, calcular subtotales, filtrar productos y más.</li>
+                </ul>
+                <h4>📋 Funcionalidades</h4>
+                <ul>
+                    <li>Ingreso de datos de 3 productos con validación</li>
+                    <li>Extracción de nombres de productos</li>
+                    <li>Cálculo de subtotales (precio × cantidad)</li>
+                    <li>Cálculo del valor total del inventario</li>
+                    <li>Filtrado de productos con precio > $100</li>
+                    <li>Identificación de productos con stock bajo (cantidad < 10)</li>
+                </ul>
+                <h4>💡 Ejemplo de Salida</h4>
+                <pre><code>=== ANÁLISIS DE INVENTARIO ===
+1. Datos originales: [['Laptop', 1200, 5], ['Mouse', 25, 50], ['Teclado', 75, 20]]
+2. Nombres: ['Laptop', 'Mouse', 'Teclado']
+3. Subtotales: [6000, 1250, 1500]
+4. Total inventario: $ 8750
+5. Productos con precio > $100: ['Laptop']
+6. Stock bajo (cantidad < 10): ['Laptop']</code></pre>
+            </div>
+
+            <!-- Código 2 -->
+            <div class="card">
+                <h3>2️⃣ Listas como Colas: Sistema de Gestión de Pedidos</h3>
+                <p>
+                    Este ejemplo ilustra la implementación de la estructura de datos <strong>Cola (Queue)</strong> utilizando <code>collections.deque</code> de Python. Las colas funcionan bajo el principio <strong>FIFO (First In, First Out)</strong>, donde el primer elemento en entrar es el primero en salir.
+                </p>
+                <h4>🔑 Conceptos Clave</h4>
+                <ul>
+                    <li><strong><code>collections.deque</code>:</strong> Una lista optimizada para inserciones y eliminaciones rápidas en ambos extremos.</li>
+                    <li><strong>Clase <code>SistemaPedidos</code>:</strong> Modela un sistema de pedidos de restaurante con métodos para agregar y procesar pedidos.</li>
+                    <li><strong>Principio FIFO:</strong> Los pedidos se procesan en el orden en que fueron recibidos.</li>
+                </ul>
+                <h4>📋 Métodos Principales</h4>
+                <ul>
+                    <li><code>agregar_pedido(cliente, items)</code>: Añade un nuevo pedido al final de la cola</li>
+                    <li><code>procesar_siguiente_pedido()</code>: Elimina y procesa el pedido del principio de la cola</li>
+                    <li><code>mostrar_estado()</code>: Proporciona una visión general del sistema</li>
+                </ul>
+                <h4>🍳 Caso de Uso</h4>
+                <p>
+                    Simulación de un restaurante donde los pedidos se toman en orden y se procesan en ese mismo orden, garantizando que ningún pedido se pierda y se procesen en orden de llegada.
+                </p>
+            </div>
+
+            <!-- Código 3 -->
+            <div class="card">
+                <h3>3️⃣ Listas como Pilas: Implementación de Stack</h3>
+                <p>
+                    Este código implementa la estructura de datos <strong>Pila (Stack)</strong> utilizando una lista de Python, adhiriéndose al principio <strong>LIFO (Last In, First Out)</strong>, donde el último elemento en entrar es el primero en salir.
+                </p>
+                <h4>🔑 Conceptos Clave</h4>
+                <ul>
+                    <li><strong>Clase <code>Pila</code>:</strong> Implementa los métodos esenciales de una pila.</li>
+                    <li><strong>Operaciones O(1):</strong> Las operaciones de apilar y desapilar tienen complejidad temporal constante.</li>
+                    <li><strong>Métodos Mágicos:</strong> <code>__len__</code>, <code>__str__</code> y <code>__repr__</code> mejoran la usabilidad.</li>
+                </ul>
+                <h4>📋 Métodos Principales</h4>
+                <ul>
+                    <li><code>apilar(elemento)</code>: Agrega un elemento al tope de la pila</li>
+                    <li><code>desapilar()</code>: Elimina y retorna el elemento del tope</li>
+                    <li><code>ver_tope()</code>: Retorna el elemento del tope sin eliminarlo</li>
+                    <li><code>esta_vacia()</code>: Verifica si la pila está vacía</li>
+                    <li><code>tamano()</code>: Retorna el número de elementos</li>
+                </ul>
+                <h4>💡 Aplicación Práctica</h4>
+                <p>
+                    El código demuestra cómo usar una pila para invertir una palabra. Por ejemplo, la palabra "DATA" se invierte a "ATAD" usando el principio LIFO: cada letra se apila y luego se desapila en orden inverso.
+                </p>
+            </div>
+
+            <!-- Código 4 -->
+            <div class="card">
+                <h3>4️⃣ Listas por Comprensión Anidadas: Creación de Matrices</h3>
+                <p>
+                    Este código muestra cómo utilizar <strong>listas por comprensión anidadas</strong> para crear estructuras de datos multidimensionales como matrices de forma compacta y elegante.
+                </p>
+                <h4>🔑 Conceptos Clave</h4>
+                <ul>
+                    <li><strong>Sintaxis Anidada:</strong> Permite generar una lista de listas en una sola línea de código.</li>
+                    <li><strong>Matrices Multidimensionales:</strong> Crea estructuras 2D, 3D o más complejas fácilmente.</li>
+                    <li><strong>Aplanamiento:</strong> También se puede usar para convertir matrices en listas simples.</li>
+                </ul>
+                <h4>📋 Ejemplos</h4>
+                <p>
+                    <strong>Creación de Matriz 3x3:</strong> Genera una matriz donde cada elemento es el producto del índice de fila por el índice de columna.
+                </p>
+                <p>
+                    <strong>Aplanamiento de Matriz:</strong> Convierte una matriz 2D en una lista simple de elementos.
+                </p>
+            </div>
+
+            <!-- Código 5 -->
+            <div class="card">
+                <h3>5️⃣ Aplicación Web Interactiva</h3>
+                <p>
+                    El resto del archivo contiene una <strong>aplicación web completa</strong> escrita en HTML, CSS y JavaScript. Aunque no es código Python, es un ejemplo de desarrollo web interactivo y educativo.
+                </p>
+                <h4>🔑 Características Principales</h4>
+                <ul>
+                    <li><strong>Aplicación de Una Sola Página (SPA):</strong> Utiliza JavaScript para mostrar/ocultar secciones sin recargar.</li>
+                    <li><strong>Diseño Responsivo:</strong> CSS con <code>flexbox</code> y <code>grid</code> para dispositivos móviles y escritorio.</li>
+                    <li><strong>Autoevaluación de Síntomas:</strong> Permite al usuario seleccionar síntomas y recibir evaluaciones.</li>
+                    <li><strong>Búsqueda de Centros Médicos:</strong> Incluye geolocalización y cálculo de distancias.</li>
+                    <li><strong>Quiz Educativo:</strong> Sistema de preguntas con seguimiento de puntaje.</li>
+                </ul>
+                <h4>🌐 Tecnologías Utilizadas</h4>
+                <ul>
+                    <li><strong>HTML5:</strong> Estructura semántica de la aplicación</li>
+                    <li><strong>CSS3:</strong> Estilos modernos con gradientes y animaciones</li>
+                    <li><strong>JavaScript (Vanilla):</strong> Lógica interactiva sin dependencias externas</li>
+                    <li><strong>Geolocation API:</strong> Para obtener la ubicación del usuario</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Resumen -->
+        <section>
+            <h2>📊 Resumen de Contenidos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Tema</th>
+                        <th>Estructura de Datos</th>
+                        <th>Complejidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Gestión de Inventario</td>
+                        <td>Listas por Comprensión</td>
+                        <td>O(n)</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Sistema de Pedidos</td>
+                        <td>Cola (deque)</td>
+                        <td>O(1)</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Estructura Pila</td>
+                        <td>Pila (Stack)</td>
+                        <td>O(1)</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Creación de Matrices</td>
+                        <td>Listas Anidadas</td>
+                        <td>O(n²)</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Aplicación Web</td>
+                        <td>HTML/CSS/JS</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto">
+            <h2>📞 Contacto e Información</h2>
+            <div class="card">
+                <h4>🔗 Sobre Este Repositorio</h4>
+                <p>
+                    Este repositorio fue creado como una herramienta educativa para enseñar conceptos fundamentales de programación en Python. Cada sección está diseñada para ser clara, concisa y práctica.
+                </p>
+                <p>
+                    Si tienes preguntas, sugerencias o deseas contribuir a este proyecto, te invitamos a hacerlo. Recuerda que este proyecto está bajo la licencia MIT, lo que significa que puedes usarlo, modificarlo y distribuirlo libremente.
+                </p>
+            </div>
+            <div class="card">
+                <h4>✨ Características Destacadas</h4>
+                <ul>
+                    <li>Ejemplos de código completamente funcionales</li>
+                    <li>Explicaciones detalladas de cada concepto</li>
+                    <li>Aplicaciones prácticas del mundo real</li>
+                    <li>Documentación clara y profesional</li>
+                    <li>Licencia MIT para uso libre</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <strong>Repositorio de Conceptos de Programación</strong> | 
+            Creado por <strong>Joseph Alexander Morales Cardona</strong>
+        </p>
+        <p>
+            Licencia MIT © 2024 | 
+            <a href="#introduccion">Volver al Inicio</a>
+        </p>
+        <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.8;">
+            Este sitio fue generado automáticamente a partir del archivo README.md
+        </p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">↑</div>
+
+    <script>
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+
